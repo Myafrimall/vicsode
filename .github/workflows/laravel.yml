@@ -1,0 +1,44 @@
+name: Deploy Laravel Project on push
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get the latest code
+        uses: actions/checkout@v2.3.2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Specify the version of Node.js you want to use
+
+      - name: Install Dependencies
+        run: composer install --ignore-platform-reqs --no-interaction --prefer-dist
+
+      # - name: Generate key
+      #   run: php artisan key:generate
+
+      # - name: Run Migration
+      #   run: php artisan migrate --force
+
+      - name: Directory Permissions
+        run: chmod -R 777 storage bootstrap/cache
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftp.instatro.com
+          username: vicsode@vicsode.com.ng
+          password: Vicsode2026!@
