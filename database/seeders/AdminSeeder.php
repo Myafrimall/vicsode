@@ -11,7 +11,7 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         User::updateOrCreate(
-            ['email' => 'admin@vicsode.com.ng'],
+            ['email' => 'service@vicsode.com'],
             [
                 'name' => 'Admin',
                 'password' => Hash::make('Vicsode2026!@'),
