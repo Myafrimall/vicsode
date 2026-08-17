@@ -177,13 +177,6 @@
 
                 <!-- Right Actions -->
                 <div class="flex items-center space-x-5">
-                    @auth
-                        @if(auth()->user()->is_admin)
-                            <a href="{{ route('admin.dashboard') }}" class="text-gray-600 hover:text-brand-600 transition" title="Admin Panel">
-                                <i class="fas fa-cog text-lg"></i>
-                            </a>
-                        @endif
-                    @endauth
                     <a href="{{ route('cart.index') }}" class="relative text-gray-700 hover:text-brand-600 transition">
                         <i class="fas fa-shopping-bag text-xl"></i>
                         @php $cartCount = array_sum(array_column(session('cart', []), 'quantity')); @endphp
