@@ -184,18 +184,6 @@
                             <span class="absolute -top-2 -right-2 bg-brand-600 text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center">{{ $cartCount }}</span>
                         @endif
                     </a>
-                    @auth
-                        <form method="POST" action="{{ route('logout') }}" class="inline">
-                            @csrf
-                            <button type="submit" class="text-gray-600 hover:text-brand-600 transition" title="Logout">
-                                <i class="fas fa-sign-out-alt text-lg"></i>
-                            </button>
-                        </form>
-                    @else
-                        <a href="{{ route('login') }}" class="text-gray-600 hover:text-brand-600 transition" title="Login">
-                            <i class="fas fa-user text-lg"></i>
-                        </a>
-                    @endauth
                 </div>
             </div>
         </div>
